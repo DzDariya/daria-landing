@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Форма отправляет на /api/request — локально отвечает server.mjs,
+# на Netlify запрос уходит в функцию
+[[redirects]]
+  from = "/api/request"
+  to = "/.netlify/functions/request"
+  status = 200
