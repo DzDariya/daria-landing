@@ -69,6 +69,14 @@ section[id] { scroll-margin-top: 96px; }
 }
 [data-reveal].is-visible { opacity: 1; transform: none; }
 
+/* Направления появления: справа → налево и снизу → вверх */
+[data-reveal].reveal-x { transform: translate3d(46px, 0, 0); }
+[data-reveal].reveal-up { transform: translate3d(0, 44px, 0); }
+[data-reveal].reveal-x.is-visible,
+[data-reveal].reveal-up.is-visible { transform: none; }
+[data-reveal].reveal-x,
+[data-reveal].reveal-up { transition-duration: .8s; }
+
 /* ---------------- Buttons ---------------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -224,9 +232,9 @@ h3 { margin: 0; font-family: var(--font-serif); font-weight: 600; line-height: 1
 /* ---------------- Concerns ---------------- */
 .concerns { background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%); }
 .concerns__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.concern { position: relative; padding: 38px 32px 34px; overflow: hidden; transition: transform .6s var(--ease), box-shadow .6s var(--ease), background .6s var(--ease); }
+.concern { position: relative; padding: 38px 32px 34px; overflow: hidden; transition: transform .6s var(--ease), box-shadow .6s var(--ease), background .6s var(--ease); transition-delay: var(--d, 0s); }
 .concern::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 2px; background: linear-gradient(90deg, var(--olive), var(--sand)); opacity: .7; }
-.concern:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(52,68,52,.13); background: rgba(255,255,255,.74); }
+.concern:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(52,68,52,.13); background: rgba(255,255,255,.74); transition-delay: 0s; }
 .concern__top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 34px; }
 .concern__num { font-family: var(--font-serif); font-size: 44px; line-height: 1; color: var(--sage-soft); }
 .concern__icon { width: 42px; height: 42px; color: var(--olive); opacity: .75; }
@@ -284,8 +292,8 @@ h3 { margin: 0; font-family: var(--font-serif); font-weight: 600; line-height: 1
 /* ---------------- Stages ---------------- */
 .stages { background: var(--cream); }
 .stages__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.stage { padding: 32px 28px; transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
-.stage:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+.stage { padding: 32px 28px; transition: transform .5s var(--ease), box-shadow .5s var(--ease); transition-delay: var(--d, 0s); }
+.stage:hover { transform: translateY(-7px); box-shadow: var(--shadow); transition-delay: 0s; }
 .stage__num { font-family: var(--font-script); font-size: 34px; line-height: 1; color: var(--olive); }
 .stage h3 { font-size: 24px; margin: 12px 0 12px; }
 .stage p { margin: 0; font-size: 13.5px; line-height: 1.8; color: var(--muted); }
@@ -437,8 +445,8 @@ h3 { margin: 0; font-family: var(--font-serif); font-weight: 600; line-height: 1
   .logo__sub { font-size: 8.5px; }
 
   .hero { min-height: auto; padding: 118px 0 40px; }
-  .hero__bg img { object-position: 70% center; }
-  .hero__overlay { background: linear-gradient(180deg, rgba(248,245,238,.86) 0%, rgba(248,245,238,.94) 55%, rgba(248,245,238,.99) 100%); }
+  .hero__bg img { object-position: 58% center; filter: saturate(.9) brightness(1.06); }
+  .hero__overlay { background: linear-gradient(180deg, rgba(248,245,238,.7) 0%, rgba(248,245,238,.62) 34%, rgba(248,245,238,.74) 58%, rgba(248,245,238,.96) 100%); }
   .eyebrow-line { margin-bottom: 22px; }
   .eyebrow-line span:last-child { font-size: 10px; letter-spacing: .2em; }
   .hero__title { font-size: clamp(40px, 10.2vw, 54px); margin-bottom: 22px; }
@@ -469,8 +477,8 @@ h3 { margin: 0; font-family: var(--font-serif); font-weight: 600; line-height: 1
   .technical__row .tech-card:nth-child(n+3) { display: none; }
   .stages__grid { grid-template-columns: 1fr; gap: 14px; }
   .stage { padding: 26px 24px; }
-  .about__portrait img { height: 420px; }
-  .about__seal { width: 78px; height: 78px; right: -12px; bottom: 18px; }
+  .about__portrait > img:first-child { height: 420px; }
+  .about__seal { width: 82px; height: 82px; right: -10px; bottom: 16px; }
   .services__grid { grid-template-columns: 1fr; }
   .service { padding: 24px 22px; }
   .contact__highlight { padding: 18px 18px; }
